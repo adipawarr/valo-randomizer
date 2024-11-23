@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>What Should I Play</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <audio id="backgroundMusic" loop>
+            <source src="bgmusic.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+    
+        <div class="container">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#" id="allAgents"><img src="pictures/val.png" alt="Agents"><span class="nav-text">All Agents</span></a></li>
+                    <li><a href="#" id="Duelist"><img src="pictures/duelist.png" alt="Duelist"><span class="nav-text">Duelist</span></a></li>
+                    <li><a href="#" id="Controller"><img src="pictures/controller.png" alt="Controller"><span class="nav-text">Controller</span></a></li>
+                    <li><a href="#" id="Sentinel"><img src="pictures/sentinel.png" alt="Sentinel"><span class="nav-text">Sentinel</span></a></li>
+                    <li><a href="#" id="Initiator"><img src="pictures/initiator.png" alt="Initiator"><span class="nav-text">Initiator</span></a></li>
+                </ul>
+            </nav>
+            <h1>What we playin??</h1>
+
+        
+            
+            <button id="spinButton">🎲 Roll for an Agent!</button>
+            
+            <p id="agentInfo">Our Random Valorant Agent Picker chooses an agent at random. All agents are selected by default,
+                 but you can also select roles by clicking on the Initiator, Sentinel, Duelist, and Controller buttons.</p>
+
+            <div id="slideContainer" class="slide-container" style="display: none;">
+            <div  id="agentDisplay" class="agent-display">
+                <h2 id="agentName">Your Agent</h2>
+                
+                <img id="agentSplash" src="pngs/placeholder.webp" alt="Agent Splash Art" style="display:none;">
+            
+                
+                <audio id="agentVoiceLine" style="display: none;">
+                    <source src="voices/placeholder.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            </div>
+            
+        </div>
+        <footer>
+            <button id="muteButton">🔊 Mute</button>
+            <button id="fullScreenButton">⛶</button>
+        </footer>
+        <script src="script.js"></script>
+        
+        <script>
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            const muteButton = document.getElementById('muteButton');
+
+            backgroundMusic.volume = 0.5;
+            window.onload = function(){
+                backgroundMusic.play().catch(error =>{
+                    console.log("Autoplay was prevented:", error);
+                });
+            };
+            muteButton.addEventListener('click',()=>{
+                if(backgroundMusic.paused){
+                    backgroundMusic.play();
+                    muteButton.textContent = '🔊'; 
+                }else{
+                    backgroundMusic.pause();
+                    muteButton.textContent = '🔈';
+                }
+            });
+        </script>
+    </body>
+</html>
