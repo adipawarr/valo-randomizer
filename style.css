@@ -129,6 +129,10 @@ body{
     height: 600px;
     width: 100%;
     text-align: center;
+    background-size: cover;
+    background-position: center;
+    /*border-radius: inherit;*/
+    overflow: hidden;
 }
 
 
