@@ -1,0 +1,228 @@
+body{
+    font-family:Arial,sans-serif;
+    margin:0;
+    padding: 0;
+    background: url('pictures/home2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    /*background-color: black;*/
+    overflow: hidden;
+} 
+
+.container{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 100;
+}
+
+.navbar{
+    background-color: rgba(0,0,0,1);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.navbar ul{
+    list-style-type:none;
+    padding:0;
+    display: flex;
+    justify-content: center;
+}
+.navbar li{
+    display: inline;
+    margin:0 15px;
+}
+.navbar a{
+    text-decoration: none;
+    color: #333;
+    font-weight:bold;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.nav-text{
+    opacity:0;
+    position:absolute;
+    bottom: -40px;
+    left:50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s,bottom 0.3s;
+    white-space: nowrap;
+}
+
+.navbar a:hover .nav-text{
+    opacity: 1;
+    bottom: -20px;
+    color: white;
+    
+}
+.navbar a img{
+    filter: brightness(0) invert(1);
+    width:30px;
+    height: auto;
+    margin-right: 8px;
+    transition: transform 0.3s;
+}
+.navbar a:hover img{
+    transform: scale(1.1);
+}
+
+#spinButton{
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #ff4081;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    transition: background-color 0.3s;
+}
+#spinButton:hover{
+    background-color: #e91e63;
+}
+
+.slide-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+    height: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+
+.agent-display img{
+    position: relative;
+    width: 90%;
+    height: 90%;
+    left: -100%;
+    animation: slideIn 3s ease-in-out forwards;
+}
+
+@keyframes popOut {
+
+    0% {transform: translate(-50%,-50%) scale(0); opacity: 0;}
+
+    50%{
+        transform: translate(-50%,-50%) scale(1.1);
+        opacity: 1;
+    }
+
+    100% {transform: translate(-50%,-50%) scale(1); opacity: 1;}
+}
+
+#agentSplash{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    animation: popOut 1.5s ease-out forwards;
+    z-index: 10;
+    display: none;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+/*#agentSplash{
+    position: fixed;
+    top: 0%;
+    left: 0;
+    width: 100vw;
+    height: 100vh ;
+    object-fit: relative;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 999;
+}
+
+.show-splash{
+    opacity: 1;
+    animation: pop 0.5s ease forwards ;
+}
+
+
+#agentInfo{
+    color:black;
+    font-weight: bold;
+    font-size: medium;
+    font-style: oblique;
+}
+
+@keyframes pop {
+    0% {transform: scale(0); opacity: 0;}
+    50% {transform: scale(1.1); opacity: 1;}
+    100% {transform: scale(1);}
+    
+}*/
+#muteButton {
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    padding: 10px; 
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+    z-index: 1000; 
+}
+#fullScreenButton{
+    position: fixed; 
+    bottom: 0; 
+    right: 0; 
+    padding: 10px; 
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+    z-index: 1000; 
+}
+
+@media (max-width: 600px) {
+    /* Stack navbar vertically */
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar li {
+        margin: 10px 0;
+    }
+
+    /* Container */
+    .container {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    /* Spin button */
+    #spinButton {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+
+    /* Adjust agent splash image */
+    #agentSplash {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    /* Footer buttons (mute and fullscreen) */
+    #muteButton, #fullScreenButton {
+        bottom: 10px;
+        left: 10px;
+        padding: 8px;
+        border-radius: 8px;
+    }
+
+    #fullScreenButton {
+        left: auto;
+        right: 10px;
+    }
+}
