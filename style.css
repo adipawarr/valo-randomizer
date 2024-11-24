@@ -264,4 +264,24 @@ body{
         left: auto;
         right: 10px;
     }
+    #agentName {
+        position: relative;
+        z-index: 20;
+        margin-top: 20px;
+    }
+
+    #agentSplash {
+        position: absolute;
+        z-index: 10;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        height: auto;
+    }
+
+    .slide-container {
+        position: relative;
+        height: auto; /* Allow dynamic height for smaller screens */
+        overflow: hidden;
+    }
 }
