@@ -50,61 +50,35 @@ const agentNameDisplay = document.getElementById('agentName');
 const agentSplash = document.getElementById('agentSplash');
 const agentVoiceLine = document.getElementById('agentVoiceLine');
 const slideContainer = document.getElementById('slideContainer');
+const spinButton = document.getElementById('spinButton');
+
 
 let spinTimeout;
 
 function spinForAgent(selectedType) {
-
-    const spinButton  = document.getElementById('spinButton');
     spinButton.disabled = true;
-
     if (spinTimeout){
         clearTimeout(spinTimeout);
         spinTimeout = null;
     }
-    let selectedAgents;
-    if (selectedType === "allAgents") {
-        selectedAgents = [].concat(
-            agentName.Duelist,
-            agentName.Controller,
-            agentName.Sentinel,
-            agentName.Initiator
-        );
-    } else {
-        selectedAgents = agentName[selectedType];
-    }
+    const agents = selectedType === "allAgents"
+        ? Object.values(agentName).flat()
+        : agentName[selectedType];
+    const randomAgent = agents[Math.floor(Math.random() * agents.length)];
 
-    const randomAgent = selectedAgents[Math.floor(Math.random() * selectedAgents.length)];
-
-    agentSplash.style.transition = "opacity 0.3s ease-out";
+    // Animation logic
     agentSplash.style.opacity = "0";
-    setTimeout(()=>{
-        agentSplash.style.display = "none";
-
+    setTimeout(() => {
         agentNameDisplay.textContent = randomAgent.name;
         agentSplash.src = randomAgent.splashArt;
 
-        agentSplash.classList.remove("pop-out");
+        // Reset animation state
+        agentSplash.classList.remove("pop-out", "show-splash");
         void agentSplash.offsetWidth;
-
         agentSplash.style.display = "block";
         agentSplash.style.opacity = "1";
         agentSplash.classList.add("pop-out");
-
-        slideContainer.style.display = "block";
-        agentSplash.style.display = "block";
-        agentSplash.style.left = "50%";
-        agentSplash.style.transform = "translate(-50%,-50%) scale(0)";
-        agentSplash.classList.remove("pop-out");
-        agentSplash.offsetWidth;
-        agentSplash.classList.add("pop-out");
-        agentSplash.classList.add("show-splash");
-        agentSplash.style.display = "block";
-
-        
-
-        
-    },300);
+    }, 300);
     //agentNameDisplay.textContent = randomAgent.name;
     //agentSplash.src = randomAgent.splashArt;
     //agentVoiceLine.src = randomAgent.voiceLine;
@@ -127,7 +101,6 @@ function spinForAgent(selectedType) {
 
     spinTimeout = setTimeout(() => {
         spinButton.disabled = false;
-        agentSplash.classList.remove("show-splash")
         agentSplash.style.display = "none";
         slideContainer.style.display = "none";
     }, 4000);
