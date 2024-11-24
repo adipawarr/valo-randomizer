@@ -264,24 +264,26 @@ body{
         left: auto;
         right: 10px;
     }
-    #agentName {
+   #agentName {
         position: relative;
-        z-index: 20;
+        z-index: 10; /* Lower than splash art */
         margin-top: 20px;
     }
 
     #agentSplash {
         position: absolute;
-        z-index: 10;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 100%;
+        z-index: 20; /* Higher than agent name */
+        top: 10%; /* Adjust this value as needed */
+        transform: translate(-50%, 0);
+        left: 50%;
+        width: 90%; /* Responsive scaling */
         height: auto;
     }
 
     .slide-container {
         position: relative;
-        height: auto; /* Allow dynamic height for smaller screens */
+        height: auto;
+        text-align: center;
         overflow: hidden;
     }
 }
