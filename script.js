@@ -77,6 +77,8 @@ function spinForAgent(selectedType) {
         agentSplash.style.opacity = "1";
         agentSplash.classList.add("pop-out");
     };
+    console.log("Splash Art:", agentSplash.src);
+    agentSplash.style.display = "block
 }, 300);
 
     //agentNameDisplay.textContent = randomAgent.name;
