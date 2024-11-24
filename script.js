@@ -69,16 +69,15 @@ function spinForAgent(selectedType) {
     // Animation logic
     agentSplash.style.opacity = "0";
     setTimeout(() => {
-        agentNameDisplay.textContent = randomAgent.name;
-        agentSplash.src = randomAgent.splashArt;
+    agentNameDisplay.textContent = randomAgent.name;
+    agentSplash.src = randomAgent.splashArt;
 
-        // Reset animation state
-        agentSplash.classList.remove("pop-out", "show-splash");
-        void agentSplash.offsetWidth;
+    agentSplash.onload = () => {
         agentSplash.style.display = "block";
         agentSplash.style.opacity = "1";
         agentSplash.classList.add("pop-out");
-    }, 300);
+    };
+}, 300);
     //agentNameDisplay.textContent = randomAgent.name;
     //agentSplash.src = randomAgent.splashArt;
     //agentVoiceLine.src = randomAgent.voiceLine;
