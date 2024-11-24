@@ -36,6 +36,14 @@ const agentName = {
     ] 
 };
 
+function preloadImages() {
+    Object.values(agentName).flat().forEach(agent=>{
+        const img = new Image();
+        img.src = agent.splashArt;
+    });
+}
+preloadImages();
+
 
 
 const agentNameDisplay = document.getElementById('agentName');
