@@ -71,13 +71,14 @@ function spinForAgent(selectedType) {
     setTimeout(() => {
     agentNameDisplay.textContent = randomAgent.name;
     agentSplash.src = randomAgent.splashArt;
-
+    
     agentSplash.onload = () => {
         agentSplash.style.display = "block";
         agentSplash.style.opacity = "1";
         agentSplash.classList.add("pop-out");
     };
 }, 300);
+
     //agentNameDisplay.textContent = randomAgent.name;
     //agentSplash.src = randomAgent.splashArt;
     //agentVoiceLine.src = randomAgent.voiceLine;
